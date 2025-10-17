@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elenco Camere</title>
-  </head>
-  <body>
-    <h1>Elenco delle Camere Disponibili</h1>
+{% block title %}Elenco Camere - {{ block.super }}{% endblock %}
 
-    {% if rooms %}
-    <ul>
-      {% for room in rooms %}
-      <li>
-        <strong>{{ room.name }}</strong> (N° {{ room.room_number }}) - Tipo: 
-        {{ room.get_room_type_display }} - Prezzo: €{{ room.price_per_night }} -
-        Capacità: {{ room.capacity }} persone {% if not room.is_available %} -
-        <span style="color: red">NON DISPONIBILE</span>{% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>Nessuna camera trovata.</p>
-    {% endif %}
-  </body>
-</html>
+{% block content %}
+<h1>Elenco delle Camere Disponibili</h1>
+
+{% if rooms %}
+<ul>
+  {% for room in rooms %}
+  <li>
+    <strong>{{ room.name }}</strong> (N° {{ room.room_number }}) - Tipo: {{ room.get_room_type_display }} - Prezzo: €{{ room.price_per_night }} - Capacità: {{ room.capacity }} persone
+    {% if not room.is_available %} - <span style="color: red">NON DISPONIBILE</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Nessuna camera trovata.</p>
+{% endif %}
+{% endblock %}
