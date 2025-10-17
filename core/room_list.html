@@ -12,8 +12,8 @@
     <ul>
       {% for room in rooms %}
       <li>
-        <strong>{{ room.name }}</strong> (N° {{ room.room_number }}) - Tipo: {{ room.get_room_type_display }} - 
-        Prezzo: €{{ room.price_per_night }} -
+        <strong>{{ room.name }}</strong> (N° {{ room.room_number }}) - Tipo: 
+        {{ room.get_room_type_display }} - Prezzo: €{{ room.price_per_night }} -
         Capacità: {{ room.capacity }} persone {% if not room.is_available %} -
         <span style="color: red">NON DISPONIBILE</span>{% endif %}
       </li>
